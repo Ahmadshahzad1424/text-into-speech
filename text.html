@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="rgb(6, 193, 219)">
+    <title>Text to Speech App</title>
+    <link rel="stylesheet" href="./text.css">
+
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="bg uwu"></div>
+        <div class="bg"></div>
+        <div class="content">
+            <div class="img">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z">
+                    </path>
+                </svg>
+            </div>
+            <div class="h1">
+                <u>Text to Speech</u>
+            </div>
+            <div class="p">
+                <label for="text">Enter your text below:</label><br>
+                <textarea id="text" placeholder="Type something here..." oninput="autoResize(this)"></textarea>
+
+                <button onclick="speakText()" aria-label="Speak">
+                    <img src="./voice-svgrepo-com.svg" alt="Speak icon">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+        function speakText() {
+            const text = document.getElementById("text").value;
+            if (text.trim() === "") {
+                alert("Please enter some text!");
+                return;
+            }
+
+            const speech = new SpeechSynthesisUtterance(text);
+
+            window.speechSynthesis.speak(speech)
+        }
+
+        function autoResize(textarea) {
+            textarea.style.height = 'auto'; // Reset height
+            textarea.style.height = textarea.scrollHeight + 'px'; // Set to full scroll height
+        }
+
+    </script>
+</body>
+
+</html>
